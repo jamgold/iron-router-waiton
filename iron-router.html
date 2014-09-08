@@ -1,0 +1,62 @@
+<head>
+  <title>iron-router</title>
+</head>
+
+<body>
+  {{> hello}}
+</body>
+
+<template name="hello">
+	{{>nav}}
+	<h1>Hello World!</h1>
+	{{greeting}}
+	<input type="button" value="Click" />
+	{{renderRouter}}
+</template>
+
+<template name="home">
+	<div id="home" class="animated fadeIn">
+	<p class="page">Starting</p>
+	</div>
+	{{>posts}}
+</template>
+
+<template name="one">
+	<div id="one" class="animated fadeIn">
+	<p class="page">This is page One</p>
+	</div>
+	{{>posts}}
+</template>
+
+<template name="two">
+	<div id="two" class="animated fadeIn">
+	<p class="page">this is page two</p>
+	</div>
+	{{>posts}}
+</template>
+
+<template name="three">
+	<div id="three" class="animated fadeIn">
+	<p class="page">Page three</p>
+	</div>
+	{{>posts}}
+</template>
+
+<template name="nav">
+	<a href="/">Home</a>
+	<a href="/one">One</a>
+	<a href="/two">Two</a>
+	<a href="/three">Three</a>
+</template>
+
+<template name="loading">
+	<h1>Loading ...</h1>
+</template>
+
+<template name="posts">
+	<ol>
+		{{#each posts}}
+		<li>{{title}}</li>
+		{{/each}}
+	</ol>
+</template>
