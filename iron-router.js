@@ -18,13 +18,20 @@ if (Meteor.isClient) {
 
   Router.configure({
     loadingTemplate: 'loading',
-    waitOn: function(pause) {
+    waitOn: function() {
       return [Meteor.subscribe('posts', {path: this.path})];
     },
-    onBeforeAction: 'loading',
+    onBeforeAction: function(pause) {
+      if(!this.ready())
+      {
+        if(this.router.options.loadingTemplate);
+          this.render(this.router.options.loadingTemplate);
+        pause();
+      }
+    },
     data: function() {
       return {
-        posts: Posts.find()
+        posts: Posts.find({path:this.path})
       };
     },
   });
